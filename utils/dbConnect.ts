@@ -21,7 +21,7 @@ export default async function dbConnect(){
 
     try {
         const connectionInstance = await mongoose.connect(MONGODB_URI);
-        connection.isConnected = connectionInstance.connections?.[0].readyState;
+        connection.isConnected = connectionInstance.connections?.[0]?.readyState;
         console.log("Connection successful")
     } catch (error) {
         console.error(error)
