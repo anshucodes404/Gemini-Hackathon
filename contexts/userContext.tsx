@@ -1,4 +1,4 @@
-
+"use client"
 //create context
 //useContext to make context available
 //context provider to wrap around app

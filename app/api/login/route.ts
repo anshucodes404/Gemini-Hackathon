@@ -8,15 +8,16 @@ export async function POST(req: NextRequest) {
 
 try {
         await dbConnect()
-        const {email, password, username} = await req.json();
-        if(!(email || username) || !password){
-            return NextResponse.json({success: false, message: "Email or username and password are required"}, {status: 400});
+        const {password, username} = await req.json();
+        if(!username || !password){
+            return NextResponse.json({success: false, message: "Username and password are required"}, {status: 400});
         }
+
     
-        const user = await User.findOne({$or: [{email}, {username}]});
+        const user = await User.findOne({username})
     
         if(!user){
-            return NextResponse.json({success: false, message: "Invalid email"}, {status: 401})
+            return NextResponse.json({success: false, message: "Invalid username"}, {status: 401})
         }
     
         const isPasswordCorrect = await bcrypt.compare(password, user.password);
