@@ -1,46 +1,76 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import dynamic from "next/dynamic"
-import { Filter, RefreshCw, BarChart3, AlertTriangle } from 'lucide-react'
+import { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
+import { Filter, RefreshCw, BarChart3, AlertTriangle } from "lucide-react";
 
-const Map = dynamic(() => import("@/components/map"), { ssr: false })
+const Map = dynamic(() => import("@/components/map"), { ssr: false });
 
 type Report = {
-  _id: string
-  trashLevel: "Low" | "Medium" | "High" | "Critical"
-  latitude: number
-  longitude: number
-  timestamp: string
-}
+  _id: string;
+  trashLevel: "Low" | "Medium" | "High" | "Critical";
+  latitude: number;
+  longitude: number;
+  timestamp: string;
+};
 
 export default function DashboardPage() {
-  const [reports, setReports] = useState<Report[]>([])
-  const [filter, setFilter] = useState("All")
-  const [autoRefresh, setAutoRefresh] = useState(true)
-  const [isLoading, setIsLoading] = useState(true)
+  const [reports, setReports] = useState<Report[]>([]);
+  const [filter, setFilter] = useState("All");
+  const [autoRefresh, setAutoRefresh] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+  const [location, setLocation] = useState<{ lat: number; lon: number } | null>(
+    null
+  );
 
-  // FETCH DATA
-  const loadReports = async () => {
-    try {
-      const res = await fetch("/api/reports")
-      const data = await res.json()
-      setReports(data)
-      setIsLoading(false)
-    } catch (error) {
-      console.error("Failed to load reports:", error)
-      setIsLoading(false)
-    }
-  }
-
-  // AUTO REFRESH EVERY 5 SEC
   useEffect(() => {
-    loadReports()
-    if (autoRefresh) {
-      const interval = setInterval(loadReports, 5000)
-      return () => clearInterval(interval)
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setLocation({
+            lat: position.coords.latitude,
+            lon: position.coords.longitude,
+          });
+        },
+        (error) => {
+          console.error("Error getting location:", error);
+          setLocation({ lat: 12.9716, lon: 77.5946 });
+        }
+      );
+    } else {
+      console.error("Geolocation is not supported by this browser");
+      setLocation({ lat: 12.9716, lon: 77.5946 });
     }
-  }, [autoRefresh])
+  }, []);
+
+  const loadReports = async () => {
+    if (!location) return; // Don't load reports until we have location
+    try {
+      const res = await fetch("/api/reports", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ lat: location.lat, lon: location.lon }),
+      }).then((res) => res.json());
+      console.log(res);
+      setReports(res.reports);
+      setIsLoading(false);
+    } catch (error) {
+      console.error("Failed to load reports:", error);
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (location) {
+      loadReports();
+      if (autoRefresh) {
+        const interval = setInterval(loadReports, 5000);
+        return () => clearInterval(interval);
+      }
+    }
+  }, [autoRefresh, location]);
 
   // STATISTICS
   const stats = {
@@ -49,9 +79,9 @@ export default function DashboardPage() {
     medium: reports.filter((r) => r.trashLevel === "Medium").length,
     high: reports.filter((r) => r.trashLevel === "High").length,
     critical: reports.filter((r) => r.trashLevel === "Critical").length,
-  }
+  };
 
-  const filterLevels = ["All", "Low", "Medium", "High", "Critical"]
+  const filterLevels = ["All", "Low", "Medium", "High", "Critical"];
 
   return (
     <div className="min-h-screen flex flex-col lg:flex-row bg-background">
@@ -63,7 +93,9 @@ export default function DashboardPage() {
             <BarChart3 className="w-6 h-6 text-primary" />
             Dashboard
           </h1>
-          <p className="text-sm text-muted-foreground">Real-time waste monitoring system</p>
+          <p className="text-sm text-muted-foreground">
+            Real-time waste monitoring system
+          </p>
         </div>
 
         {/* Filters */}
@@ -100,27 +132,37 @@ export default function DashboardPage() {
           <div className="space-y-3">
             <div className="flex items-center justify-between p-3 rounded-lg bg-muted/50">
               <span className="text-sm text-muted-foreground">Total Bins</span>
-              <span className="text-lg font-bold text-foreground">{stats.total}</span>
+              <span className="text-lg font-bold text-foreground">
+                {stats.total}
+              </span>
             </div>
 
             <div className="grid grid-cols-2 gap-3">
               <div className="p-3 rounded-lg bg-primary/10 border border-primary/20">
                 <div className="text-xs text-muted-foreground mb-1">Low</div>
-                <div className="text-2xl font-bold text-primary">{stats.low}</div>
+                <div className="text-2xl font-bold text-primary">
+                  {stats.low}
+                </div>
               </div>
 
               <div className="p-3 rounded-lg bg-accent/10 border border-accent/20">
                 <div className="text-xs text-muted-foreground mb-1">Medium</div>
-                <div className="text-2xl font-bold text-accent">{stats.medium}</div>
+                <div className="text-2xl font-bold text-accent">
+                  {stats.medium}
+                </div>
               </div>
 
               <div className="p-3 rounded-lg bg-secondary/10 border border-secondary/20">
                 <div className="text-xs text-muted-foreground mb-1">High</div>
-                <div className="text-2xl font-bold text-secondary">{stats.high}</div>
+                <div className="text-2xl font-bold text-secondary">
+                  {stats.high}
+                </div>
               </div>
 
               <div className="p-3 rounded-lg bg-destructive/10 border border-destructive/20">
-                <div className="text-xs text-muted-foreground mb-1">Critical</div>
+                <div className="text-xs text-muted-foreground mb-1">
+                  Critical
+                </div>
                 <div className="text-2xl font-bold text-destructive flex items-center gap-1">
                   {stats.critical}
                   {stats.critical > 0 && <AlertTriangle className="w-4 h-4" />}
@@ -133,7 +175,11 @@ export default function DashboardPage() {
         {/* Auto Refresh Toggle */}
         {/* <div className="space-y-3 mt-auto">
           <h2 className="text-sm font-semibold text-foreground flex items-center gap-2">
-            <RefreshCw className={`w-4 h-4 text-secondary ${autoRefresh ? "animate-spin" : ""}`} />
+            <RefreshCw
+              className={`w-4 h-4 text-secondary ${
+                autoRefresh ? "animate-spin" : ""
+              }`}
+            />
             Auto Refresh
           </h2>
 
@@ -168,5 +214,5 @@ export default function DashboardPage() {
         )}
       </div>
     </div>
-  )
+  );
 }
