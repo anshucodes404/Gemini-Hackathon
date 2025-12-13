@@ -30,7 +30,7 @@ export default function HomePage() {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
               <Link
-                href="/signup"
+                href="/upload"
                 className="group px-8 py-4 rounded-xl bg-primary text-primary-foreground hover:bg-accent hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300 font-semibold text-lg flex items-center gap-2 hover:scale-105"
               >
                 Report Waste Bin
