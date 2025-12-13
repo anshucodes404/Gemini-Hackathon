@@ -15,9 +15,10 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">
+            {/* <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">
               <Leaf className="w-6 h-6 text-primary" />
-            </div>
+            </div> */}
+            <span className="text-2xl">🌿</span>
             <span className="text-xl font-bold text-foreground">
               SmartWaste <span className="text-primary">AI</span>
             </span>

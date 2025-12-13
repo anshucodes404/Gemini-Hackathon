@@ -9,7 +9,10 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center space-y-8 animate-fade-in-up">
             {/* Subtitle Badge */}
-
+            {/* <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium">
+              <Leaf className="w-4 h-4" />
+              <span>AI‑powered waste monitoring</span>
+            </div> */}
 
             {/* Main Title */}
             <h1 className="text-5xl md:text-7xl font-bold text-balance leading-tight">
@@ -28,7 +31,7 @@ export default function HomePage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
               <Link
                 href="/upload"
-                className="group px-8 py-4 rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300 font-semibold text-lg flex items-center gap-2 hover:scale-105"
+                className="group px-8 py-4 rounded-xl bg-primary text-primary-foreground hover:bg-accent hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300 font-semibold text-lg flex items-center gap-2 hover:scale-105"
               >
                 Report Waste Bin
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
@@ -135,7 +138,7 @@ export default function HomePage() {
               How <span className="text-primary">SmartWaste AI</span> Works
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Four simple steps to revolutionize your city's waste management
+              Four simple steps to revolutionize your city&apos;s waste management
             </p>
           </div>
 
@@ -226,7 +229,7 @@ export default function HomePage() {
           <div className="flex flex-wrap justify-center gap-4">
             {[
               "⚡ Next.js App Router",
-              "🧠 Gemini 1.5 Flash Vision",
+              "🧠 Gemini 2.5 Flash Vision",
               "🍃 MongoDB Atlas",
               "🗺 Leaflet Maps",
               "🎨 TailwindCSS",
