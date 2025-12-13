@@ -44,20 +44,31 @@ export default function DashboardPage() {
   }, []);
 
   const loadReports = async () => {
-    if (!location) return; // Don't load reports until we have location
+    if (!location) return;
+    setIsLoading(true);
     try {
-      const res = await fetch("/api/reports", {
+      const res = await fetch("/api/map", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ lat: location.lat, lon: location.lon }),
-      }).then((res) => res.json());
-      console.log(res);
-      setReports(res.reports);
-      setIsLoading(false);
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || "Failed to fetch reports");
+      }
+
+      console.log("Reports loaded:", data);
+      
+      // Ensure we always have an array
+      setReports(Array.isArray(data.reports) ? data.reports : []);
     } catch (error) {
       console.error("Failed to load reports:", error);
+      setReports([]); // Set empty array on error
+    } finally {
       setIsLoading(false);
     }
   };
