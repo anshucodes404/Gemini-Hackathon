@@ -2,6 +2,7 @@
 
 import { useMemo } from "react"
 
+
 type Report = {
   _id: string
   trashLevel: "Low" | "Medium" | "High" | "Critical"
@@ -162,7 +163,7 @@ export default function Map({ reports, filter }: MapProps) {
       </svg>
 
       {/* Legend */}
-      <div className="absolute bottom-4 left-4 bg-card/95 backdrop-blur-sm border border-border rounded-lg p-4 shadow-lg">
+      {/* <div className="absolute bottom-4 left-4 bg-card/95 backdrop-blur-sm border border-border rounded-lg p-4 shadow-lg">
         <div className="text-sm font-semibold text-foreground mb-3">Trash Levels</div>
         <div className="space-y-2">
           {["Low", "Medium", "High", "Critical"].map((level) => (
@@ -175,7 +176,7 @@ export default function Map({ reports, filter }: MapProps) {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
 
       {/* Coordinates Display */}
       <div className="absolute top-4 right-4 bg-card/95 backdrop-blur-sm border border-border rounded-lg px-3 py-2 shadow-lg">

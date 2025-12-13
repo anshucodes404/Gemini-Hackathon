@@ -230,7 +230,7 @@ export default function UploadPage() {
           {/* Powered by Badge */}
           <div className="text-center pt-4 border-t border-border">
             <p className="text-xs text-muted-foreground">
-              Powered by <span className="font-semibold text-primary">Gemini 1.5 Flash Vision AI</span>
+              Powered by <span className="font-semibold text-primary">Gemini 2.5 Flash Vision AI</span>
             </p>
           </div>
         </div>

@@ -131,7 +131,7 @@ export default function DashboardPage() {
         </div>
 
         {/* Auto Refresh Toggle */}
-        <div className="space-y-3 mt-auto">
+        {/* <div className="space-y-3 mt-auto">
           <h2 className="text-sm font-semibold text-foreground flex items-center gap-2">
             <RefreshCw className={`w-4 h-4 text-secondary ${autoRefresh ? "animate-spin" : ""}`} />
             Auto Refresh
@@ -149,7 +149,7 @@ export default function DashboardPage() {
           </button>
 
           {autoRefresh && <p className="text-xs text-muted-foreground text-center">Refreshing every 5 seconds</p>}
-        </div>
+        </div> */}
       </div>
 
       {/* MAP */}
