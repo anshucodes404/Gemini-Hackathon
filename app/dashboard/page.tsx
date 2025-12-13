@@ -63,11 +63,11 @@ export default function DashboardPage() {
 
       console.log("Reports loaded:", data);
 
-      // Ensure we always have an array
+
       setReports(Array.isArray(data.reports) ? data.reports : []);
     } catch (error) {
       console.error("Failed to load reports:", error);
-      setReports([]); // Set empty array on error
+      setReports([]);
     } finally {
       setIsLoading(false);
     }
@@ -79,7 +79,7 @@ export default function DashboardPage() {
     }
   }, [location]);
 
-  // STATISTICS
+
   const stats = {
     total: reports.length,
     low: reports.filter((r) => r.trashLevel === "Low").length,
@@ -92,9 +92,9 @@ export default function DashboardPage() {
 
   return (
     <div className="min-h-screen flex flex-col lg:flex-row bg-background">
-      {/* SIDEBAR */}
+
       <div className="lg:w-80 bg-card border-r border-border p-6 flex flex-col gap-6">
-        {/* Header */}
+
         <div className="space-y-2">
           <h1 className="text-2xl font-bold text-foreground flex items-center gap-2">
             <BarChart3 className="w-6 h-6 text-primary" />
@@ -105,7 +105,7 @@ export default function DashboardPage() {
           </p>
         </div>
 
-        {/* Filters */}
+
         <div className="space-y-3">
           <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
             <Filter className="w-4 h-4 text-primary" />
@@ -128,7 +128,7 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        {/* Stats */}
+
         <div className="space-y-3">
           <h2 className="text-sm font-semibold text-foreground flex items-center gap-2">
             <BarChart3 className="w-4 h-4 text-accent" />
@@ -177,23 +177,23 @@ export default function DashboardPage() {
             </div>
           </div>
           <div className=" mt-auto">
-          <button
-            onClick={loadReports}
-            disabled={isLoading || !location}
-            className="w-full py-3 px-4 rounded-xl font-medium text-sm transition-all duration-300 bg-primary/10 hover:bg-primary/20 text-primary border border-primary/20 hover:border-primary/40 flex items-center justify-center gap-2 group"
-          >
-            <RefreshCw
-              className={`w-4 h-4 transition-all duration-500 ${isLoading ? "animate-spin" : "group-hover:rotate-180"
-                }`}
-            />
-            {isLoading ? "Refreshing..." : "Refresh Reports"}
-          </button>
+            <button
+              onClick={loadReports}
+              disabled={isLoading || !location}
+              className="w-full py-3 px-4 rounded-xl font-medium text-sm transition-all duration-300 bg-primary/10 hover:bg-primary/20 text-primary border border-primary/20 hover:border-primary/40 flex items-center justify-center gap-2 group"
+            >
+              <RefreshCw
+                className={`w-4 h-4 transition-all duration-500 ${isLoading ? "animate-spin" : "group-hover:rotate-180"
+                  }`}
+              />
+              {isLoading ? "Refreshing..." : "Refresh Reports"}
+            </button>
+          </div>
         </div>
-        </div>
-        
+
       </div>
 
-      {/* MAP */}
+
       <div className="flex-1 relative">
         {isLoading ? (
           <div className="h-full flex items-center justify-center bg-muted/20">

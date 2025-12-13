@@ -42,7 +42,7 @@ export async function POST(req: NextRequest) {
     }
 
 
-    //FIXME: insted of returning the user redirect to login page
+
     return NextResponse.json(
       { success: true, message: "User created successfully", user },
       { status: 201 }

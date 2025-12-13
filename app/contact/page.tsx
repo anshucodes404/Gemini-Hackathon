@@ -17,31 +17,31 @@ export default function ContactPage() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   const [location, setLocation] = useState<{
-  latitude: number | null;
-  longitude: number | null;
-}>({
-  latitude: null,
-  longitude: null,
-});
+    latitude: number | null;
+    longitude: number | null;
+  }>({
+    latitude: null,
+    longitude: null,
+  });
 
-const fetchLocation = () => {
-  if (!navigator.geolocation) {
-    alert("Geolocation is not supported by your browser");
-    return;
-  }
-
-  navigator.geolocation.getCurrentPosition(
-    (position) => {
-      setLocation({
-        latitude: position.coords.latitude,
-        longitude: position.coords.longitude,
-      });
-    },
-    () => {
-      alert("Unable to retrieve your location");
+  const fetchLocation = () => {
+    if (!navigator.geolocation) {
+      alert("Geolocation is not supported by your browser");
+      return;
     }
-  );
-};
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        setLocation({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+        });
+      },
+      () => {
+        alert("Unable to retrieve your location");
+      }
+    );
+  };
 
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -65,7 +65,7 @@ const fetchLocation = () => {
     <div className="min-h-screen flex items-center justify-center px-4">
       <div className="card w-full max-w-lg p-8">
 
-        {/* Heading */}
+
         <h1 className="text-3xl font-bold text-orange-600 text-center">
           Contact Us
         </h1>
@@ -73,7 +73,7 @@ const fetchLocation = () => {
           Have a question or suggestion? We’d love to hear from you.
         </p>
 
-        {/* Form */}
+
         <form onSubmit={handleSubmit} className="space-y-5 mt-6">
           <Input
             label="Your Name"
@@ -92,7 +92,7 @@ const fetchLocation = () => {
             required
           />
 
-          {/* Message Field */}
+
           <div className="flex flex-col gap-1">
             <label className="text-sm font-medium text-gray-700">
               Message
@@ -109,29 +109,29 @@ const fetchLocation = () => {
               placeholder="Write your message here..."
             />
           </div>
-        {/* Location Button */}
-<div className="flex flex-col gap-2">
-  <button
-    type="button"
-    onClick={fetchLocation}
-    className="auth-btn"
-  >
-    Get My Location
-  </button>
 
-  {location.latitude && location.longitude && (
-    <p className="text-sm text-gray-600">
-      📍 Location detected: <br />
-      Lat: {location.latitude.toFixed(4)}, 
-      Lng: {location.longitude.toFixed(4)}
-    </p>
-  )}
-</div>
+          <div className="flex flex-col gap-2">
+            <button
+              type="button"
+              onClick={fetchLocation}
+              className="auth-btn"
+            >
+              Get My Location
+            </button>
+
+            {location.latitude && location.longitude && (
+              <p className="text-sm text-gray-600">
+                📍 Location detected: <br />
+                Lat: {location.latitude.toFixed(4)},
+                Lng: {location.longitude.toFixed(4)}
+              </p>
+            )}
+          </div>
 
           <Button type="submit">Send Message</Button>
         </form>
 
-        {/* Info */}
+
         <div className="mt-8 text-center text-sm text-gray-500">
           <p>Email: gemini.ai@example.com</p>
           <p>Built for Smart Cities & Sustainability 🌱</p>

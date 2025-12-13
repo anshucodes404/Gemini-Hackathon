@@ -42,7 +42,7 @@ export async function POST(req: NextRequest) {
     const buffer = Buffer.from(await file.arrayBuffer());
     const base64Image = buffer.toString("base64");
 
-    // console.log(base64Image);
+
     const apiKey = process.env.GEMINI_API_KEY;
 
     if (!apiKey) {

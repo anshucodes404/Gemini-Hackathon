@@ -4,20 +4,20 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Updated color scheme for a more vibrant, professional look matching the home page */
+
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.55 0.22 142.5); /* Vibrant green */
+  --primary: oklch(0.55 0.22 142.5);
   --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.65 0.25 262); /* Purple accent */
+  --secondary: oklch(0.65 0.25 262);
   --secondary-foreground: oklch(1 0 0);
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.7 0.19 85); /* Yellow-orange accent */
+  --accent: oklch(0.7 0.19 85);
   --accent-foreground: oklch(0.145 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0 0);
@@ -218,7 +218,7 @@ body {
   }
 }
 
-/* Custom smooth animations for interactive elements */
+
 @keyframes fade-in-up {
   from {
     opacity: 0;
@@ -247,12 +247,9 @@ body {
 .animate-float {
   animation: float 3s ease-in-out infinite;
 }
-/* ============================
-   AUTH UI (LOGIN / SIGNUP)
-   Added without touching theme
-   ============================ */
 
-/* Auth page background wrapper */
+
+
 .auth-wrapper {
   min-height: 100vh;
   display: flex;
@@ -261,7 +258,7 @@ body {
   padding: 1rem;
 }
 
-/* Auth card */
+
 .auth-card {
   background: var(--card);
   color: var(--card-foreground);
@@ -274,7 +271,7 @@ body {
   animation: fade-in-up 0.6s ease-out;
 }
 
-/* Auth heading */
+
 .auth-title {
   font-size: 1.8rem;
   font-weight: 700;
@@ -290,14 +287,14 @@ body {
   margin-bottom: 1.5rem;
 }
 
-/* Auth form spacing */
+
 .auth-form {
   display: flex;
   flex-direction: column;
   gap: 1.1rem;
 }
 
-/* Auth button */
+
 .auth-btn {
   background: var(--primary);
   color: var(--primary-foreground);
@@ -312,7 +309,7 @@ body {
   transform: translateY(-1px);
 }
 
-/* Bottom switch text */
+
 .auth-footer {
   text-align: center;
   font-size: 0.9rem;
@@ -340,7 +337,7 @@ body {
   color: var(--orange-main);
 }
 
-/* ========= BUTTON ========= */
+
 .orange-btn {
   background: linear-gradient(
     90deg,

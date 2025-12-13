@@ -8,35 +8,28 @@ import { useRouter } from "next/navigation"
 
 export default function HomePage() {
 
-  const {user}=useUser();
+  const { user } = useUser();
   console.log(user)
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
+
       <section className="relative overflow-hidden bg-gradient-to-br from-background via-muted/30 to-accent/10 py-20 md:py-32">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center space-y-8 animate-fade-in-up">
-            {/* Subtitle Badge */}
-            {/* <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium">
-              <Leaf className="w-4 h-4" />
-              <span>AI‑powered waste monitoring</span>
-            </div> */}
-
-            {/* Main Title */}
             <h1 className="text-5xl md:text-7xl font-bold text-balance leading-tight">
               <span className="text-foreground">Transforming City</span>
               <br />
               <span className="text-primary">Cleanliness with AI</span>
             </h1>
 
-            {/* Description */}
+
             <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed text-pretty">
               Real‑time waste detection that helps cities identify and clean overflowing bins before they become a
               problem.
             </p>
 
-            {/* CTA Buttons */}
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
               <Link
                 href="/upload"
@@ -53,7 +46,7 @@ export default function HomePage() {
               </Link>
             </div>
 
-            {/* Stats */}
+
             <div className="flex flex-wrap justify-center gap-8 pt-8 text-center">
               <div className="space-y-1">
                 <div className="text-3xl md:text-4xl font-bold text-primary">92%</div>
@@ -71,7 +64,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Decorative Elements */}
+
         <div className="absolute top-20 right-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-float" />
         <div
           className="absolute bottom-20 left-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl"
@@ -79,7 +72,7 @@ export default function HomePage() {
         />
       </section>
 
-      {/* Feature Highlights */}
+
       <section className="py-20 md:py-32 bg-background">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16 space-y-4">
@@ -92,7 +85,7 @@ export default function HomePage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {/* Feature 1 */}
+
             <div className="group relative p-8 rounded-2xl bg-card border border-border hover:border-primary hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 hover:-translate-y-2">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative space-y-4">
@@ -107,7 +100,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Feature 2 */}
+
             <div className="group relative p-8 rounded-2xl bg-card border border-border hover:border-accent hover:shadow-2xl hover:shadow-accent/10 transition-all duration-500 hover:-translate-y-2">
               <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-secondary/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative space-y-4">
@@ -122,7 +115,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Feature 3 */}
+
             <div className="group relative p-8 rounded-2xl bg-card border border-border hover:border-secondary hover:shadow-2xl hover:shadow-secondary/10 transition-all duration-500 hover:-translate-y-2">
               <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-primary/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative space-y-4">
@@ -139,7 +132,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* How It Works */}
+
       <section className="py-20 md:py-32 bg-muted/30">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16 space-y-4">
@@ -182,7 +175,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Why It Matters */}
+
       <section className="py-20 md:py-32 bg-gradient-to-br from-primary/5 via-background to-accent/5">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -225,7 +218,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Tech Stack */}
+
       <section className="py-20 md:py-32 bg-background">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
@@ -254,7 +247,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CTA Section */}
+
       <section className="py-20 md:py-32 bg-gradient-to-br from-primary via-accent to-secondary text-primary-foreground relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-96 h-96 bg-primary-foreground rounded-full blur-3xl" />
@@ -284,7 +277,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Footer */}
+
       <footer className="bg-card border-t border-border py-12">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">

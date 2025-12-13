@@ -25,7 +25,7 @@ export default function UploadPage() {
       router.push('/login');
     }
   }, [user])
-  // 📸 Handle file selection or drop
+
   const handleImageSelect = (file: File | null) => {
     setImage(file || null)
     setSuccess(false)
@@ -46,7 +46,7 @@ export default function UploadPage() {
     handleImageSelect(file || null)
   }
 
-  // 📍 Auto-detect location
+
   const detectLocation = () => {
     if (!navigator.geolocation) {
       setStatus("⚠️ Geolocation not supported by your browser")
@@ -72,7 +72,7 @@ export default function UploadPage() {
     )
   }
 
-  // 🚀 Submit form
+
   const submitHandler = async () => {
     if (!image) {
       setStatus("⚠️ Please upload an image first")
@@ -91,7 +91,7 @@ export default function UploadPage() {
     formData.append("image", image)
     formData.append("latitude", latLng.lat.toString())
     formData.append("longitude", latLng.lng.toString())
-    
+
     try {
       const url = await uploadOnCloudinary(image);
       console.log(url)
@@ -119,7 +119,7 @@ export default function UploadPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-muted/30 to-primary/5 py-12 px-6">
       <div className="max-w-2xl mx-auto space-y-8">
-        {/* Header */}
+
         <div className="text-center space-y-4">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium">
             <Upload className="w-4 h-4" />
@@ -136,13 +136,13 @@ export default function UploadPage() {
           </p>
         </div>
 
-        {/* Upload Card */}
+
         <div
           className="bg-card rounded-2xl shadow-xl border border-border p-8 space-y-6 hover:shadow-2xl transition-all duration-300"
           onDrop={onDrop}
           onDragOver={(e) => e.preventDefault()}
         >
-          {/* Drag & Drop Box */}
+
           <div className="border-2 border-dashed border-border rounded-xl p-8 text-center cursor-pointer hover:border-primary hover:bg-primary/5 transition-all duration-300 group">
             <input type="file" accept="image/*" onChange={onFileChange} className="hidden" id="fileInput" />
 
@@ -170,7 +170,7 @@ export default function UploadPage() {
             )}
           </div>
 
-          {/* Location Button */}
+
           <button
             onClick={detectLocation}
             disabled={locationLoading}
@@ -201,7 +201,7 @@ export default function UploadPage() {
             </div>
           )}
 
-          {/* Submit Button */}
+
           <button
             onClick={submitHandler}
             disabled={loading || !image || !latLng}
@@ -220,14 +220,14 @@ export default function UploadPage() {
             )}
           </button>
 
-          {/* Status Message */}
+
           {status && (
             <div
               className={`flex items-start gap-3 p-4 rounded-lg ${success
-                  ? "bg-primary/10 border border-primary/20"
-                  : status.includes("⚠️") || status.includes("❌")
-                    ? "bg-destructive/10 border border-destructive/20"
-                    : "bg-accent/10 border border-accent/20"
+                ? "bg-primary/10 border border-primary/20"
+                : status.includes("⚠️") || status.includes("❌")
+                  ? "bg-destructive/10 border border-destructive/20"
+                  : "bg-accent/10 border border-accent/20"
                 }`}
             >
               {success ? (
@@ -241,7 +241,7 @@ export default function UploadPage() {
             </div>
           )}
 
-          {/* Powered by Badge */}
+
           <div className="text-center pt-4 border-t border-border">
             <p className="text-xs text-muted-foreground">
               Powered by <span className="font-semibold text-primary">Gemini 2.5 Flash Vision AI</span>
@@ -249,7 +249,7 @@ export default function UploadPage() {
           </div>
         </div>
 
-        {/* Info Cards */}
+
         <div className="grid md:grid-cols-3 gap-4">
           <div className="p-4 rounded-xl bg-card border border-border text-center">
             <div className="text-2xl mb-2">🎯</div>

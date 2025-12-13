@@ -40,14 +40,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} antialiased`}>
-        {/* Navbar visible on all pages */}
-        <UserProvider>
-        <Navbar />
 
-        {/* Padding so content is not hidden behind navbar */}
-        <main className="pt-20">{children}</main>
+        <UserProvider>
+          <Navbar />
+
+
+          <main className="pt-20">{children}</main>
         </UserProvider>
-        
+
       </body>
     </html>
   )
