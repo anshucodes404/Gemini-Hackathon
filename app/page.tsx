@@ -229,7 +229,7 @@ export default function HomePage() {
           <div className="flex flex-wrap justify-center gap-4">
             {[
               "⚡ Next.js App Router",
-              "🧠 Gemini 1.5 Flash Vision",
+              "🧠 Gemini 2.5 Flash Vision",
               "🍃 MongoDB Atlas",
               "🗺 Leaflet Maps",
               "🎨 TailwindCSS",
@@ -266,10 +266,10 @@ export default function HomePage() {
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
             </Link>
             <Link
-              href="/login"
+              href="/dashboard"
               className="px-8 py-4 rounded-xl border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10 transition-all duration-300 font-semibold text-lg hover:scale-105"
             >
-              Login
+              View Dashboard
             </Link>
           </div>
         </div>
