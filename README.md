@@ -77,10 +77,12 @@ This repository contains our project built for a Gemini-based hackathon, showcas
 3. **Set up environment variables**
    Create a `.env.local` file in the root directory:
    ```env
-   NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=your_cloud_name
-   NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET=your_upload_preset
-   MONGODB_URI=your_mongodb_connection_string
+   JWT_SECRET_TOKEN=your_JWT_secret
+   MONGODB_URI=your_Mongodb_atlas_uri
    GEMINI_API_KEY=your_gemini_api_key
+   CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
+   CLOUDINARY_API_KEY=your_cloudinary_api_key
+   CLOUDINARY_API_SECRET=your_cloudinary_secret
    ```
 
 4. **Run the development server**
