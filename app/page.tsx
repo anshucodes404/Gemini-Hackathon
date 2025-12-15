@@ -15,7 +15,7 @@ export default function HomePage() {
     <div className="min-h-screen">
 
       <section className="relative overflow-hidden bg-gradient-to-br from-background via-muted/30 to-accent/10 py-20 md:py-32">
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="relative z-10 max-w-7xl mx-auto px-6">
           <div className="text-center space-y-8 animate-fade-in-up">
             <h1 className="text-5xl md:text-7xl font-bold text-balance leading-tight">
               <span className="text-foreground">Transforming City</span>
@@ -31,9 +31,10 @@ export default function HomePage() {
 
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
+
               <Link
                 href="/upload"
-                className="group px-8 py-4 rounded-xl bg-primary text-primary-foreground hover:bg-accent hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300 font-semibold text-lg flex items-center gap-2 hover:scale-105"
+                className="px-8 py-4 rounded-xl bg-primary text-primary-foreground hover:bg-accent hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300 font-semibold text-lg flex items-center gap-2 hover:scale-105"
               >
                 Report Waste Bin
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
@@ -65,9 +66,9 @@ export default function HomePage() {
         </div>
 
 
-        <div className="absolute top-20 right-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-float" />
+        <div className="pointer-events-none absolute top-20 right-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-float" />
         <div
-          className="absolute bottom-20 left-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl"
+          className="pointer-events-none absolute bottom-20 left-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl"
           style={{ animationDelay: "1s" }}
         />
       </section>
